@@ -1,0 +1,63 @@
+[gd_scene load_steps=12 format=3 uid="uid://ccornii0oulq7"]
+
+[sub_resource type="Gradient" id="Gradient_o6mah"]
+offsets = PackedFloat32Array(0, 0.198413, 0.396825, 0.611111, 0.801587, 1)
+colors = PackedColorArray(0.394235, 0.213978, 0.0856447, 1, 0.66, 0.3454, 0.231, 1, 0.394235, 0.213978, 0.0856447, 1, 0.66, 0.3454, 0.231, 1, 0.394235, 0.213978, 0.0856447, 1, 0.66, 0.3454, 0.231, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ukhuw"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hi660"]
+seamless = true
+color_ramp = SubResource("Gradient_o6mah")
+noise = SubResource("FastNoiseLite_ukhuw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5cb5p"]
+albedo_texture = SubResource("NoiseTexture2D_hi660")
+uv1_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1tm5w"]
+material = SubResource("StandardMaterial3D_5cb5p")
+top_radius = 0.25
+bottom_radius = 0.3
+
+[sub_resource type="Gradient" id="Gradient_ih5hr"]
+offsets = PackedFloat32Array(0, 0.174603, 0.380952, 0.611111, 0.84127, 1)
+colors = PackedColorArray(0.197592, 0.503979, 0, 1, 0.304, 0.76, 0, 1, 0.197592, 0.503979, 0, 1, 0.304, 0.76, 0, 1, 0.197592, 0.503979, 0, 1, 0.304, 0.76, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uvqle"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cr36k"]
+seamless = true
+color_ramp = SubResource("Gradient_ih5hr")
+noise = SubResource("FastNoiseLite_uvqle")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1eshw"]
+albedo_color = Color(0.695503, 0.695503, 0.695503, 1)
+albedo_texture = SubResource("NoiseTexture2D_cr36k")
+uv1_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fjdbe"]
+material = SubResource("StandardMaterial3D_1eshw")
+top_radius = 0.6
+bottom_radius = 1.0
+height = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_okm6k"]
+material = SubResource("StandardMaterial3D_1eshw")
+top_radius = 0.1
+bottom_radius = 0.8
+height = 1.0
+
+[node name="Tree0" type="Node3D"]
+
+[node name="Trunk" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CylinderMesh_1tm5w")
+
+[node name="Leaves1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mesh = SubResource("CylinderMesh_fjdbe")
+
+[node name="Leaves2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+mesh = SubResource("CylinderMesh_okm6k")
